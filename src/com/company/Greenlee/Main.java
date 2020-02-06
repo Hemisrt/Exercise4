@@ -17,11 +17,16 @@ public class Main {
         Hint: You can use String.split(" ") to split a string into an array of strings
         based on where spaces occur in the original string.*/
         city();
+        averageTemp();
+        output();
     }
 
     private static Scanner input = new Scanner(System.in);
 
     private static Map<String, Double> cityAvgTemp = new HashMap<>();
+    private static List<Double> calc = new ArrayList<>();
+    private static List<Double> avg = new ArrayList<>();
+    private static List<String> city = new ArrayList<>();
 
     public static void city() {
         Scanner input = new Scanner(System.in);
@@ -35,16 +40,25 @@ public class Main {
                 double temp = temper.nextDouble();
                 double totalTemp = 0;
                 totalTemp = temp + totalTemp;
+                calc.add(totalTemp);
             }
-            //cityAvgTemp.put(user);
+            city.add(user);
             System.out.println("Please enter a city names: ");
-            user = input.next();
+            user = input.nextLine();
         }
     }
 
-    public static void averageTemp(double average) {
-        //for (int i = 0; i < )
+    public static void averageTemp() {
+        double average = 0;
+        for (int i = 0; i < calc.size(); i++) {
+            average = calc.get(i) / 5;
+            calc.set(i, average);
+        }
     }
 
-
+    public static void output() {
+        for (int i = 0; i < city.size(); i++) {
+            System.out.println(cityAvgTemp.put(city.get(i), avg.get(i)));
+        }
+    }
 }
